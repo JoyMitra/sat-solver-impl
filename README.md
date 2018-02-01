@@ -24,9 +24,9 @@ This repository contains a random SAT generator  that generates CNFs in [DIMACS 
 
 3. You can run the compiled program in the following two ways:
 
-    `./random f n k l` or
+    `$ ./random f n k l` or
 
-    `./random f n k l "strict"`   where,
+    `$ ./random f n k l "strict"`   where,
 
     1. f : name of the file where the CNF will be saved
     2. n : Number of non-empty clauses that should occur in a formula
