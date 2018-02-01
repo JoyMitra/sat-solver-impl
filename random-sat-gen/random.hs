@@ -23,7 +23,7 @@ rmOpp [] [] = []
 rmOpp x [] = []
 rmOpp [] x = []
 rmOpp x (y:ys) =
-  if ((-y) `elem` x)
+  if ((y `elem` x) && ((-y) `elem` x))
     then (if (y > 0) then (y:(rmOpp x ys)) else ((-y):(rmOpp x ys)))
     else (y:(rmOpp x ys))
 
