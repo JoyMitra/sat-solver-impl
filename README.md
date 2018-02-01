@@ -6,7 +6,7 @@ This repository contains a random SAT generator  that generates CNFs in [DIMACS 
 
 # Required libraries
 
-1. [Cabal](https://www.haskell.org/cabal/) is a is a system for building and packaging Haskell libraries and programs
+1. [Cabal](https://www.haskell.org/cabal/) is a system for building and packaging Haskell libraries and programs
 
 2. Install the *random* package using Cabal
 
