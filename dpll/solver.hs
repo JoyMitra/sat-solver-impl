@@ -5,6 +5,7 @@ import System.Environment
 import Data.Time
 import Data.List
 import Data.Maybe
+import System.Timeout
 
 solve :: [[Int]] -> [(Int,[[Int]],[Int])] -> Bool -> [Int]
 solve [] state backtrack = (map first state)
@@ -116,7 +117,8 @@ showIntList [] = ""
 showIntList (x:xs) = do
   show x ++ " " ++ showIntList xs
 
-main = do
+worker :: IO ()
+worker = do
         file <- getArgs
         start <- getCurrentTime
         if (length (file) == 1)
@@ -134,3 +136,10 @@ main = do
             print "Error : missing args DIMACS file"
         end <- getCurrentTime
         mapM_ putStrLn [("c Done with time " ++ (show (diffUTCTime end start)))]
+
+main :: IO ()
+main = do
+res <- timeout 600000000 worker
+case res of
+  Nothing -> putStrLn "c solver terminated with no results after 10 minutes"
+  Just () -> putStrLn "c solver ran to completion"
