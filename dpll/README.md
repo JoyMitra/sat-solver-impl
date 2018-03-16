@@ -13,5 +13,7 @@ The algorithm takes a formula in CNF form as input and assigns a true value to t
 The output will be in [this](http://www.satcompetition.org/2009/format-solvers2009.html) format. Following is an example output:
 
 s SATISFIABLE
+
 v 4 -2 -1 -3
+
 c Done with time 0.001s
