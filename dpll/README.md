@@ -1,4 +1,4 @@
-# An implementation of a SAT solver.
+# An implementation of a SAT solver
 
 The key idea behind this algorithm is to find a clause in the formula is unsatisfiable. If  such a clause exists then the formula is unsatisfiable else the formula is satisfiable.
 
