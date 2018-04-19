@@ -22,10 +22,6 @@ assignRandom x gen
   | (length x) == 1 = x !! 0
   | (length x) > 1 = x !! (fst (randomR (1,1989889) gen) `mod` (length x))
 
--- contradicts :: (Ord a, Num a) => a -> [a] -> Bool
--- contradicts n [] = False
--- contradicts n (x:xs) = if (n == x) then True else (contradicts n xs)
-
 removeOpp :: (Ord a, Num a) => [a] -> [a] -> [a]
 removeOpp [] cl = cl
 removeOpp (x:xs) cl = removeOpp xs (filter (/= (-x)) cl)
