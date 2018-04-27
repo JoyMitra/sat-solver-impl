@@ -79,7 +79,7 @@ sls p nflip model formula =
         then sls p (nflip-1) modelWithZeroBCVar formula
         else let rp = (fst (randomR (0,1) (mkStdGen nflip))) :: Double
         in if (rp <= p)
-          then getNewModel model (randomUnsatClause !! (fst (randomR (0,((length randomUnsatClause)-1)) (mkStdGen nflip))))
+          then sls p (nflip-1) (getNewModel model (randomUnsatClause !! (fst (randomR (0,((length randomUnsatClause)-1)) (mkStdGen nflip))))) formula
           else let v = (fst (foldl min' (0,(length formula)) (getVarsWithBC satClauses model randomUnsatClause)))
           in sls p (nflip-1) (getNewModel model v) formula
 
@@ -152,7 +152,7 @@ worker = do
                 maxTries = read (file !! 2) :: Int
                 noise = read (file !! 3) :: Double
                 solution = solve parsed vars maxFlips maxTries noise
-            if (verify solution parsed) then
+            if (solution /= []) then
               mapM_ putStrLn ["s SATISFIABLE ","v " ++ showIntList (tail solution)]
             else
               putStrLn $ id "s UNSATISFIABLE"
